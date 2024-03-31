@@ -1,0 +1,113 @@
+        {/* {all_product.map((e)=>{
+            if(cartItems[e.id]>0){
+                return <div key={e.id}>
+                <div className="cartitems-format">
+                    <img src={e.image} alt="" className='carticon-product-icon'/>
+                    <p>{e.name}</p>
+                    <p>${e.new_price}</p>
+                    <button className='cartitems-quantity'>{cartItems[e.id]}</button>
+                    <p>{e.new_price*cartItems[e.id]}</p>
+                    <img src={remove_icon} alt="" onClick={()=>{removeCart(e.id)}}/>
+                </div>
+                </div>
+            }
+            return null;
+        })} */}
+
+    {all_product.map((e) => {
+        if (e && cartItems[e.id] > 0) {
+          return (
+            <div key={e.id} className="cartitems-format">
+              <img
+                src={e.image}
+                alt={e.name}
+                className="carticon-product-icon"
+              />
+              <p>{e.name}</p>
+              <p>${e.new_price}</p>
+              <button className="cartitems-quantity">
+                {cartItems[e.id]}
+              </button>
+              <p>{e.new_price * cartItems[e.id]}</p>
+              <img
+                src={remove_icon}
+                alt="Remove"
+                onClick={() => {
+                  removeCart(e.id);
+                }}
+              />
+            </div>
+          );
+        } else {
+          return null;
+        }
+      })}
+    </div>
+  );
+};
+
+import React, { useContext } from "react";
+import "./CartItems.css";
+import { ShopContext } from "../../context/ShopContext";
+import remove_icon from "../Assets/cart_cross_icon.png";
+
+const CartItems = () => {
+  const { all_product, cartItems, removeCart } = useContext(ShopContext);
+
+  return (
+    <div className="cartitems">
+      <div className="cartitems-format-main">
+        <p>Product</p>
+        <p>Title</p>
+        <p>Price</p>
+        <p>Quantity</p>
+        <p>Total</p>
+        <p>Remove</p>
+      </div>
+      <hr />
+      {all_product.map((e) => {
+        if (e && cartItems[e.id] > 0) {
+          return (
+            <div key={e.id} className="cartitems-format">
+              <img
+                src={e.image}
+                alt={e.name}
+                className="carticon-product-icon"
+              />
+              <p>{e.name}</p>
+              <p>${e.new_price}</p>
+              <button className="cartitems-quantity">
+                {cartItems[e.id]}
+              </button>
+              <p>{e.new_price * cartItems[e.id]}</p>
+              <img
+                src={remove_icon}
+                alt="Remove"
+                onClick={() => {
+                  removeCart(e.id);
+                }}
+              />
+            </div>
+          );
+        } else {
+          return null;
+        }
+      })}
+    </div>
+  );
+};
+
+export { CartItems, CartItems as default };
+
+{all_product.map((e)=>{
+          if(cartIterms[e.id]>0){
+            return <div className="cartitems-format">
+            <img src={e.image} alt="" />
+            <p>{e.name}</p>
+            <p>${e.new_prcie}</p>
+            <button className='cartitems-quantity'>{cartIterms[e.id]}</button>
+            <p>{e.new_prcie*cartIterms[e.id]}</p>
+            <img src={remove_icon} alt="" onClick={removeCart[e.id]}/>
+           </div>
+          }
+        })}
